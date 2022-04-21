@@ -24,7 +24,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        addItem(LandmarkContent.LandmarkItem("test", 50.0, -50.0))
+        val christ : LandmarkContent.LandmarkItem = LandmarkContent.LandmarkItem("Christ the Redeemer", -22.9519, -43.2105)
+
+        addItem(LandmarkContent.LandmarkItem("Christ the Redeemer", -22.9519, -43.2105))
+        addItem(LandmarkContent.LandmarkItem("Eiffel Tower", 48.8584, 2.2945))
+        addItem(LandmarkContent.LandmarkItem("Golden Gate Bridge", 37.8199, -122.4783))
+        addItem(LandmarkContent.LandmarkItem("Great Wall of China", 40.4319, 116.5704))
+        addItem(LandmarkContent.LandmarkItem("Pyramids of Giza", 29.9792, 31.1342))
+        addItem(LandmarkContent.LandmarkItem("Statue of Liberty", 40.6892, -74.0445))
+        addItem(LandmarkContent.LandmarkItem("Sydney Opera House", -33.8568, 151.2153))
 
 
 
@@ -86,7 +94,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, MapsActivity::class.java)
             fromLatitude = fromLat
             fromLongitude = fromLong
-            intent.putExtra("fromLandmark", LandmarkContent.ITEMS[0].name)
+            intent.putExtra("fromLandmark", LandmarkContent.ITEMS[LandmarkContent.ITEMS.indexOf(christ)].name)
             intent.putExtra("fromLatitude", LandmarkContent.ITEMS[0].latitude)
             intent.putExtra("fromLongitude", LandmarkContent.ITEMS[0].longitude)
 
