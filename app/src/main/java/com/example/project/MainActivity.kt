@@ -14,6 +14,11 @@ class MainActivity : AppCompatActivity() {
     private var fromLandmark : String? = fromSelection
     private var toLandmark : String? = toSelection
 
+    private var fromLatitude = 0.0
+    private var fromLongitude = 0.0
+    private var toLatitude = 0.0
+    private var toLongitude = 0.0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -60,6 +65,11 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        val fromLat = 25.0
+        val fromLong = 25.0
+        val toLat = -25.0
+        val toLong = -25.0
+
         var individualLocationLauncher  = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val data: Intent? = result.data
@@ -68,10 +78,16 @@ class MainActivity : AppCompatActivity() {
 
         mapButton.setOnClickListener{
             val intent = Intent(this@MainActivity, MapsActivity::class.java)
-            /* latitude = lat.text.toString().toDouble()
-            longitude = lon.text.toString().toDouble()
-            intent.putExtra("latitude", latitude)
-            intent.putExtra("longitude", longitude) */
+            fromLatitude = fromLat
+            fromLongitude = fromLong
+            intent.putExtra("fromLatitude", fromLatitude)
+            intent.putExtra("fromLongitude", fromLongitude)
+
+            toLatitude = toLat
+            toLongitude = toLong
+            intent.putExtra("toLatitude", toLatitude)
+            intent.putExtra("toLongitude", toLongitude)
+
             individualLocationLauncher.launch(intent)
         }
     }

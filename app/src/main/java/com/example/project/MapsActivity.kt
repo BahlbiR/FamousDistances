@@ -16,6 +16,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
 
+    private var fromLatitude = 0.0
+    private var fromLongitude = 0.0
+    private var toLatitude = 0.0
+    private var toLongitude = 0.0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,12 +42,39 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+
     override fun onMapReady(googleMap: GoogleMap) {
+        if (intent.hasExtra("fromLatitude")) {
+            fromLatitude = intent.getDoubleExtra("fromLatitude", 0.0)
+            //latitude = data?.getDoubleExtra("latitude", 0.0) ?: 0.0
+        }
+        if (intent.hasExtra("fromLongitude")) {
+            fromLongitude = intent.getDoubleExtra("fromLongitude", 0.0)
+            //longitude = data?.getDoubleExtra("longitude", 0.0) ?: 0.0
+        }
+        if (intent.hasExtra("toLatitude")) {
+            toLatitude = intent.getDoubleExtra("toLatitude", 0.0)
+            //latitude = data?.getDoubleExtra("latitude", 0.0) ?: 0.0
+        }
+        if (intent.hasExtra("toLongitude")) {
+            toLongitude = intent.getDoubleExtra("toLongitude", 0.0)
+            //longitude = data?.getDoubleExtra("longitude", 0.0) ?: 0.0
+        }
+
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val FROM_LOCATION_NAME_HERE = LatLng(fromLatitude, fromLongitude)
+        mMap.addMarker(MarkerOptions().position(FROM_LOCATION_NAME_HERE).title("FROM_LOCATION_NAME_HERE Marker"))
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(FROM_LOCATION_NAME_HERE, 15f))
+
+        val TO_LOCATION_NAME_HERE = LatLng(toLatitude, toLongitude)
+        mMap.addMarker(MarkerOptions().position(TO_LOCATION_NAME_HERE).title("TO_LOCATION_NAME_HERE Marker"))
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }
