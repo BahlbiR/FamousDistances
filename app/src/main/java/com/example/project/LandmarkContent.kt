@@ -9,6 +9,7 @@ object LandmarkContent {
         ITEMS.add(item)
     }
 
+    //create the object's parameters
     data class LandmarkItem(
         val name: String, val latitude: Double, val longitude: Double
     )
