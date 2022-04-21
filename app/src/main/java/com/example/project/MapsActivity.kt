@@ -20,6 +20,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private var fromLongitude = 0.0
     private var toLatitude = 0.0
     private var toLongitude = 0.0
+    private var fromLandmark : String? = "Christ the Redeemer"
+    private var toLandmark : String? = "Eiffel Tower"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +54,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             fromLongitude = intent.getDoubleExtra("fromLongitude", 0.0)
             //longitude = data?.getDoubleExtra("longitude", 0.0) ?: 0.0
         }
+        if (intent.hasExtra("fromLandmark")) {
+            fromLandmark = intent.getStringExtra("fromLandmark")
+            //latitude = data?.getDoubleExtra("latitude", 0.0) ?: 0.0
+        }
+
         if (intent.hasExtra("toLatitude")) {
             toLatitude = intent.getDoubleExtra("toLatitude", 0.0)
             //latitude = data?.getDoubleExtra("latitude", 0.0) ?: 0.0
@@ -60,16 +67,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             toLongitude = intent.getDoubleExtra("toLongitude", 0.0)
             //longitude = data?.getDoubleExtra("longitude", 0.0) ?: 0.0
         }
+        if (intent.hasExtra("toLandmark")) {
+            toLandmark = intent.getStringExtra("toLandmark")
+            //longitude = data?.getDoubleExtra("longitude", 0.0) ?: 0.0
+        }
 
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val FROM_LOCATION_NAME_HERE = LatLng(fromLatitude, fromLongitude)
-        mMap.addMarker(MarkerOptions().position(FROM_LOCATION_NAME_HERE).title("FROM_LOCATION_NAME_HERE Marker"))
+        val fromLocation = LatLng(fromLatitude, fromLongitude)
+        mMap.addMarker(MarkerOptions().position(fromLocation).title("${fromLandmark} Marker"))
         //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(FROM_LOCATION_NAME_HERE, 15f))
 
-        val TO_LOCATION_NAME_HERE = LatLng(toLatitude, toLongitude)
-        mMap.addMarker(MarkerOptions().position(TO_LOCATION_NAME_HERE).title("TO_LOCATION_NAME_HERE Marker"))
+        val toLocation = LatLng(toLatitude, toLongitude)
+        mMap.addMarker(MarkerOptions().position(toLocation).title("${toLandmark} Marker"))
 
     }
 

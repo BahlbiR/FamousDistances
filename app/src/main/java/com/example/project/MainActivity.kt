@@ -82,11 +82,13 @@ class MainActivity : AppCompatActivity() {
             fromLongitude = fromLong
             intent.putExtra("fromLatitude", fromLatitude)
             intent.putExtra("fromLongitude", fromLongitude)
+            intent.putExtra("fromLandmark", fromLandmark)
 
             toLatitude = toLat
             toLongitude = toLong
             intent.putExtra("toLatitude", toLatitude)
             intent.putExtra("toLongitude", toLongitude)
+            intent.putExtra("toLandmark", toLandmark)
 
             individualLocationLauncher.launch(intent)
         }
