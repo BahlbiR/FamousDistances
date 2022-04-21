@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityBLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/landmarkBLabel" />
 
     <TextView
         android:id="@+id/titleLabel"
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/cityALabel"
+        android:id="@+id/landmarkALabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/descriptionLabel" />
 
     <TextView
-        android:id="@+id/cityBLabel"
+        android:id="@+id/landmarkBLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -58,7 +58,7 @@
         android:layout_width="359dp"
         android:layout_height="57dp"
         android:layout_marginTop="16dp"
-        android:text="Select two cities from the lists below to find the distance between the two. To see your selctions on a map, click the button below."
+        android:text="Select two landmarks from the lists below to find the distance between the two. To see your selctions on a map, click the button below."
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:flow_wrapMode="aligned"
@@ -75,14 +75,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityALabel" />
+        app:layout_constraintTop_toBottomOf="@+id/landmarkALabel" />
 
     <TextView
         android:id="@+id/distanceLabel"
         android:layout_width="337dp"
         android:layout_height="39dp"
         android:layout_marginTop="36dp"
-        android:text="The distance between [CityA] and [CityB] are [blank] Miles apart"
+        android:text="[fromLandmark] and [toLandmark] are [blank] Miles apart"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:flow_wrapMode="aligned"
@@ -94,10 +94,9 @@
         android:id="@+id/mapButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="See on a Map"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/distanceLabel" />
 
