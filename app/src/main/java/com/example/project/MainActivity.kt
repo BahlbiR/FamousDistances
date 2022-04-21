@@ -25,14 +25,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val christ : LandmarkContent.LandmarkItem = LandmarkContent.LandmarkItem("Christ the Redeemer", -22.9519, -43.2105)
+        val eiffel : LandmarkContent.LandmarkItem = LandmarkContent.LandmarkItem("Eiffel Tower", 48.8584, 2.2945)
+        val gate : LandmarkContent.LandmarkItem = LandmarkContent.LandmarkItem("Golden Gate Bridge", 37.8199, -122.4783)
+        val wall : LandmarkContent.LandmarkItem = LandmarkContent.LandmarkItem("Great Wall of China", 40.4319, 116.5704)
+        val pyramids : LandmarkContent.LandmarkItem = LandmarkContent.LandmarkItem("Pyramids of Giza", 29.9792, 31.1342)
+        val statue : LandmarkContent.LandmarkItem = LandmarkContent.LandmarkItem("Statue of Liberty", 40.6892, -74.0445)
+        val opera : LandmarkContent.LandmarkItem = LandmarkContent.LandmarkItem("Sydney Opera House", -33.8568, 151.2153)
 
-        addItem(LandmarkContent.LandmarkItem("Christ the Redeemer", -22.9519, -43.2105))
-        addItem(LandmarkContent.LandmarkItem("Eiffel Tower", 48.8584, 2.2945))
-        addItem(LandmarkContent.LandmarkItem("Golden Gate Bridge", 37.8199, -122.4783))
-        addItem(LandmarkContent.LandmarkItem("Great Wall of China", 40.4319, 116.5704))
-        addItem(LandmarkContent.LandmarkItem("Pyramids of Giza", 29.9792, 31.1342))
-        addItem(LandmarkContent.LandmarkItem("Statue of Liberty", 40.6892, -74.0445))
-        addItem(LandmarkContent.LandmarkItem("Sydney Opera House", -33.8568, 151.2153))
+        addItem(christ)
+        addItem(eiffel)
+        addItem(gate)
+        addItem(wall)
+        addItem(pyramids)
+        addItem(statue)
+        addItem(opera)
 
 
 
