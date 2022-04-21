@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.project.LandmarkContent.addItem
 
 class MainActivity : AppCompatActivity() {
     private var fromSelection : String? = "Christ the Redeemer"
@@ -22,6 +23,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        addItem(LandmarkContent.LandmarkItem("test", 50.0, -50.0))
+
+
+
         val mapButton = findViewById<Button>(R.id.mapButton)
 
         val distanceText = findViewById<TextView>(R.id.distanceLabel)
@@ -80,9 +86,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, MapsActivity::class.java)
             fromLatitude = fromLat
             fromLongitude = fromLong
-            intent.putExtra("fromLatitude", fromLatitude)
-            intent.putExtra("fromLongitude", fromLongitude)
-            intent.putExtra("fromLandmark", fromLandmark)
+            intent.putExtra("fromLandmark", LandmarkContent.ITEMS[0].name)
+            intent.putExtra("fromLatitude", LandmarkContent.ITEMS[0].latitude)
+            intent.putExtra("fromLongitude", LandmarkContent.ITEMS[0].longitude)
 
             toLatitude = toLat
             toLongitude = toLong
