@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity() {
 
         distanceButton.setOnClickListener {
             distanceText.text = "${fromLandmark} and ${toLandmark} are about ${haversine_distance(LandmarkContent.ITEMS[fromIndex].latitude, LandmarkContent.ITEMS[fromIndex].longitude,
-                LandmarkContent.ITEMS[toIndex].latitude, LandmarkContent.ITEMS[toIndex].longitude)} Miles apart"
+                LandmarkContent.ITEMS[toIndex].latitude, LandmarkContent.ITEMS[toIndex].longitude).roundToInt()} Miles apart"
         }
 
 
