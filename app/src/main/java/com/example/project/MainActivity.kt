@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.project.LandmarkContent.addItem
+import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
     private var fromSelection : String? = "Christ the Redeemer"
@@ -22,6 +23,8 @@ class MainActivity : AppCompatActivity() {
 
     private var fromIndex = 0
     private var toIndex = 1
+
+    private var distance = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +46,23 @@ class MainActivity : AppCompatActivity() {
         addItem(statue)
         addItem(opera)
 
+        fun haversine_distance(from: LandmarkContent.LandmarkItem, to: LandmarkContent.LandmarkItem) : Double{
+            var R = 3958.8; // Radius of the Earth in miles
+            var rlat1 = from.latitude * (Math.PI/180); // Convert degrees to radians
+            var rlat2 = to.latitude * (Math.PI/180); // Convert degrees to radians
+            var difflat = rlat2-rlat1;  //Radian difference (latitudes)
+            var difflon = (to.longitude-from.longitude) * (Math.PI/180); // Radian difference (longitudes)
 
+            var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+            return d;
+        }
+
+        distance = haversine_distance(LandmarkContent.ITEMS[0], LandmarkContent.ITEMS[1])
 
         val mapButton = findViewById<Button>(R.id.mapButton)
 
         val distanceText = findViewById<TextView>(R.id.distanceLabel)
-        distanceText.text = "${fromLandmark} and ${toLandmark} are [BLANK] Miles apart"
+        distanceText.text = "${fromLandmark} and ${toLandmark} are about ${distance.roundToInt()} Miles apart"
 
         val fromSpinner = findViewById<Spinner>(R.id.fromSpinner)
         val toSpinner = findViewById<Spinner>(R.id.toSpinner)
@@ -71,7 +85,6 @@ class MainActivity : AppCompatActivity() {
             override fun onItemSelected(adapterView: AdapterView<*>, view: View?, i: Int, l: Long) {
                 fromSelection = adapterView.getItemAtPosition(i) as String
                 fromLandmark = fromSelection
-                distanceText.text = "${fromLandmark} and ${toLandmark} are [BLANK] Miles apart"
 
                 if (fromLandmark == "Christ the Redeemer"){
                     fromIndex = 0
@@ -94,6 +107,10 @@ class MainActivity : AppCompatActivity() {
                 else if (fromLandmark == "Sydney Opera House"){
                     fromIndex = 6
                 }
+
+                distance = haversine_distance(LandmarkContent.ITEMS[fromIndex], LandmarkContent.ITEMS[toIndex])
+
+                distanceText.text = "${fromLandmark} and ${toLandmark} are about ${distance.roundToInt()} Miles apart"
             }
 
             override fun onNothingSelected(adapterView: AdapterView<*>?) {}
@@ -103,7 +120,6 @@ class MainActivity : AppCompatActivity() {
             override fun onItemSelected(adapterView: AdapterView<*>, view: View?, i: Int, l: Long) {
                 toSelection = adapterView.getItemAtPosition(i) as String
                 toLandmark = toSelection
-                distanceText.text = "${fromLandmark} and ${toLandmark} are [BLANK] Miles apart"
 
                 if (toLandmark == "Christ the Redeemer"){
                     toIndex = 0
@@ -126,11 +142,15 @@ class MainActivity : AppCompatActivity() {
                 else if (toLandmark == "Sydney Opera House"){
                     toIndex = 6
                 }
+
+                distance = haversine_distance(LandmarkContent.ITEMS[fromIndex], LandmarkContent.ITEMS[toIndex])
+
+                distanceText.text = "${fromLandmark} and ${toLandmark} are about ${distance.roundToInt()} Miles apart"
             }
 
             override fun onNothingSelected(adapterView: AdapterView<*>?) {}
         }
-        
+
         var individualLocationLauncher  = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val data: Intent? = result.data
