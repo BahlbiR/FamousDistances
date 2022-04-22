@@ -77,8 +77,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Add a marker to the from location and move the camera
         val fromLocation = LatLng(fromLatitude, fromLongitude)
-        mMap.addMarker(MarkerOptions().position(fromLocation).title("${fromLandmark} Marker"))
-        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(FROM_LOCATION_NAME_HERE, 15f))
 
         // variables for adding images to map
         val christ1 = GroundOverlayOptions()
@@ -105,18 +103,45 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Add images of from landmark to map
         when (fromLandmark) {
-            "Christ the Redeemer" -> mMap.addGroundOverlay(christ1)
-            "Eiffel Tower" -> mMap.addGroundOverlay(eiffel1)
-            "Golden Gate Bridge" -> mMap.addGroundOverlay(ggb1)
-            "Pyramids of Giza" -> mMap.addGroundOverlay(giza1)
-            "Great Wall of China" -> mMap.addGroundOverlay(gwoc1)
-            "Statue of Liberty" -> mMap.addGroundOverlay(liberty1)
-            "Sydney Opera House" -> mMap.addGroundOverlay(soh1)
+            "Christ the Redeemer" ->{
+                mMap.addMarker(MarkerOptions().position(fromLocation).title("${fromLandmark} Marker")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)))
+                mMap.addGroundOverlay(christ1)
+            }
+            "Eiffel Tower" -> {
+                mMap.addMarker(MarkerOptions().position(fromLocation).title("${fromLandmark} Marker")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)))
+                mMap.addGroundOverlay(eiffel1)
+            }
+            "Golden Gate Bridge" -> {
+                mMap.addMarker(MarkerOptions().position(fromLocation).title("${fromLandmark} Marker")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)))
+                mMap.addGroundOverlay(ggb1)
+            }
+            "Pyramids of Giza" -> {
+                mMap.addMarker(MarkerOptions().position(fromLocation).title("${fromLandmark} Marker")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)))
+                mMap.addGroundOverlay(giza1)
+            }
+            "Great Wall of China" -> {
+                mMap.addMarker(MarkerOptions().position(fromLocation).title("${fromLandmark} Marker")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
+                mMap.addGroundOverlay(gwoc1)
+            }
+            "Statue of Liberty" -> {
+                mMap.addMarker(MarkerOptions().position(fromLocation).title("${fromLandmark} Marker")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)))
+                mMap.addGroundOverlay(liberty1)
+            }
+            "Sydney Opera House" -> {
+                mMap.addMarker(MarkerOptions().position(fromLocation).title("${fromLandmark} Marker")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)))
+                mMap.addGroundOverlay(soh1)
+            }
         }
 
 
         val toLocation = LatLng(toLatitude, toLongitude)
-        mMap.addMarker(MarkerOptions().position(toLocation).title("${toLandmark} Marker"))
 
         // variables for adding images to map
         val christ2 = GroundOverlayOptions()
@@ -143,13 +168,41 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Add images of from landmark to map
         when (toLandmark) {
-            "Christ the Redeemer" -> mMap.addGroundOverlay(christ2)
-            "Eiffel Tower" -> mMap.addGroundOverlay(eiffel2)
-            "Golden Gate Bridge" -> mMap.addGroundOverlay(ggb2)
-            "Pyramids of Giza" -> mMap.addGroundOverlay(giza2)
-            "Great Wall of China" -> mMap.addGroundOverlay(gwoc2)
-            "Statue of Liberty" -> mMap.addGroundOverlay(liberty2)
-            "Sydney Opera House" -> mMap.addGroundOverlay(soh2)
+            "Christ the Redeemer" -> {
+                mMap.addMarker(MarkerOptions().position(toLocation).title("${toLandmark} Marker")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)))
+                mMap.addGroundOverlay(christ2)
+            }
+            "Eiffel Tower" -> {
+                mMap.addMarker(MarkerOptions().position(toLocation).title("${toLandmark} Marker")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)))
+                mMap.addGroundOverlay(eiffel2)
+            }
+            "Golden Gate Bridge" -> {
+                mMap.addMarker(MarkerOptions().position(toLocation).title("${toLandmark} Marker")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)))
+                mMap.addGroundOverlay(ggb2)
+            }
+            "Pyramids of Giza" -> {
+                mMap.addMarker(MarkerOptions().position(toLocation).title("${toLandmark} Marker")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)))
+                mMap.addGroundOverlay(giza2)
+            }
+            "Great Wall of China" -> {
+                mMap.addMarker(MarkerOptions().position(toLocation).title("${toLandmark} Marker")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
+                mMap.addGroundOverlay(gwoc2)
+            }
+            "Statue of Liberty" -> {
+                mMap.addMarker(MarkerOptions().position(toLocation).title("${toLandmark} Marker")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)))
+                mMap.addGroundOverlay(liberty2)
+            }
+            "Sydney Opera House" -> {
+                mMap.addMarker(MarkerOptions().position(toLocation).title("${toLandmark} Marker")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)))
+                mMap.addGroundOverlay(soh2)
+            }
         }
 
     }
