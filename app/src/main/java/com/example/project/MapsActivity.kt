@@ -73,9 +73,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mMap = googleMap
 
-
-
-        // Add a marker to the from location and move the camera
+        // Get the location of the from landmark
         val fromLocation = LatLng(fromLatitude, fromLongitude)
 
         // variables for adding images to map
@@ -101,7 +99,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .image(BitmapDescriptorFactory.fromResource(R.drawable.soh))
             .position(fromLocation, 900000f, 900000f)
 
-        // Add images of from landmark to map
+        // Add images of from landmark to map and set hue
         when (fromLandmark) {
             "Christ the Redeemer" ->{
                 mMap.addMarker(MarkerOptions().position(fromLocation).title("${fromLandmark} Marker")
@@ -140,7 +138,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
 
-
+        // Get the location of the to landmark
         val toLocation = LatLng(toLatitude, toLongitude)
 
         // variables for adding images to map
@@ -166,7 +164,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .image(BitmapDescriptorFactory.fromResource(R.drawable.soh))
             .position(toLocation, 900000f, 900000f)
 
-        // Add images of from landmark to map
+        // Add images of to landmark to map and change hue
         when (toLandmark) {
             "Christ the Redeemer" -> {
                 mMap.addMarker(MarkerOptions().position(toLocation).title("${toLandmark} Marker")
@@ -204,6 +202,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 mMap.addGroundOverlay(soh2)
             }
         }
+
+        // Add a line connecting the landmarks
+        val polylineOptions = PolylineOptions()
+            .add(LatLng(fromLatitude, fromLongitude))
+            .add(LatLng(toLatitude, toLongitude))
+        val polyline = mMap.addPolyline(polylineOptions)
 
     }
 
