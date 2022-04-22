@@ -20,6 +20,9 @@ class MainActivity : AppCompatActivity() {
     private var toLatitude = 0.0
     private var toLongitude = 0.0
 
+    private var fromIndex = 0
+    private var toIndex = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -69,6 +72,28 @@ class MainActivity : AppCompatActivity() {
                 fromSelection = adapterView.getItemAtPosition(i) as String
                 fromLandmark = fromSelection
                 distanceText.text = "${fromLandmark} and ${toLandmark} are [BLANK] Miles apart"
+
+                if (fromLandmark == "Christ the Redeemer"){
+                    fromIndex = 0
+                }
+                else if (fromLandmark == "Eiffel Tower"){
+                    fromIndex = 1
+                }
+                else if (fromLandmark == "Golden Gate Bridge"){
+                    fromIndex = 2
+                }
+                else if (fromLandmark == "Great Wall of China"){
+                    fromIndex = 3
+                }
+                else if (fromLandmark == "Pyramids of Giza"){
+                    fromIndex = 4
+                }
+                else if (fromLandmark == "Statue of Liberty"){
+                    fromIndex = 5
+                }
+                else if (fromLandmark == "Sydney Opera House"){
+                    fromIndex = 6
+                }
             }
 
             override fun onNothingSelected(adapterView: AdapterView<*>?) {}
@@ -79,6 +104,28 @@ class MainActivity : AppCompatActivity() {
                 toSelection = adapterView.getItemAtPosition(i) as String
                 toLandmark = toSelection
                 distanceText.text = "${fromLandmark} and ${toLandmark} are [BLANK] Miles apart"
+
+                if (toLandmark == "Christ the Redeemer"){
+                    toIndex = 0
+                }
+                else if (toLandmark == "Eiffel Tower"){
+                    toIndex = 1
+                }
+                else if (toLandmark == "Golden Gate Bridge"){
+                    toIndex = 2
+                }
+                else if (toLandmark == "Great Wall of China"){
+                    toIndex = 3
+                }
+                else if (toLandmark == "Pyramids of Giza"){
+                    toIndex = 4
+                }
+                else if (toLandmark == "Statue of Liberty"){
+                    toIndex = 5
+                }
+                else if (toLandmark == "Sydney Opera House"){
+                    toIndex = 6
+                }
             }
 
             override fun onNothingSelected(adapterView: AdapterView<*>?) {}
@@ -100,15 +147,15 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, MapsActivity::class.java)
             fromLatitude = fromLat
             fromLongitude = fromLong
-            intent.putExtra("fromLandmark", LandmarkContent.ITEMS[LandmarkContent.ITEMS.indexOf(christ)].name)
-            intent.putExtra("fromLatitude", LandmarkContent.ITEMS[0].latitude)
-            intent.putExtra("fromLongitude", LandmarkContent.ITEMS[0].longitude)
+            intent.putExtra("fromLandmark", LandmarkContent.ITEMS[fromIndex].name)
+            intent.putExtra("fromLatitude", LandmarkContent.ITEMS[fromIndex].latitude)
+            intent.putExtra("fromLongitude", LandmarkContent.ITEMS[fromIndex].longitude)
 
             toLatitude = toLat
             toLongitude = toLong
-            intent.putExtra("toLatitude", toLatitude)
-            intent.putExtra("toLongitude", toLongitude)
-            intent.putExtra("toLandmark", toLandmark)
+            intent.putExtra("toLandmark", LandmarkContent.ITEMS[toIndex].name)
+            intent.putExtra("toLatitude", LandmarkContent.ITEMS[toIndex].latitude)
+            intent.putExtra("toLongitude", LandmarkContent.ITEMS[toIndex].longitude)
 
             individualLocationLauncher.launch(intent)
         }
