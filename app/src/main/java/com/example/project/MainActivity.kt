@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
                 fromSelection = adapterView.getItemAtPosition(i) as String
                 fromLandmark = fromSelection
 
-                if (fromLandmark == "Christ the Redeemer"){
+                if (fromLandmark == "Christ The Redeemer"){
                     fromIndex = 0
                 }
                 else if (fromLandmark == "Eiffel Tower"){
@@ -119,7 +119,7 @@ class MainActivity : AppCompatActivity() {
                 toSelection = adapterView.getItemAtPosition(i) as String
                 toLandmark = toSelection
 
-                if (toLandmark == "Christ the Redeemer"){
+                if (toLandmark == "Christ The Redeemer"){
                     toIndex = 0
                 }
                 else if (toLandmark == "Eiffel Tower"){
