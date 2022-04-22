@@ -130,13 +130,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onNothingSelected(adapterView: AdapterView<*>?) {}
         }
-
-
-        val fromLat = 25.0
-        val fromLong = 25.0
-        val toLat = -25.0
-        val toLong = -25.0
-
+        
         var individualLocationLauncher  = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val data: Intent? = result.data
@@ -145,14 +139,11 @@ class MainActivity : AppCompatActivity() {
 
         mapButton.setOnClickListener{
             val intent = Intent(this@MainActivity, MapsActivity::class.java)
-            fromLatitude = fromLat
-            fromLongitude = fromLong
+
             intent.putExtra("fromLandmark", LandmarkContent.ITEMS[fromIndex].name)
             intent.putExtra("fromLatitude", LandmarkContent.ITEMS[fromIndex].latitude)
             intent.putExtra("fromLongitude", LandmarkContent.ITEMS[fromIndex].longitude)
 
-            toLatitude = toLat
-            toLongitude = toLong
             intent.putExtra("toLandmark", LandmarkContent.ITEMS[toIndex].name)
             intent.putExtra("toLatitude", LandmarkContent.ITEMS[toIndex].latitude)
             intent.putExtra("toLongitude", LandmarkContent.ITEMS[toIndex].longitude)
