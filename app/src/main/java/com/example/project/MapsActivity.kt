@@ -7,9 +7,8 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.example.project.databinding.ActivityMapsBinding
+import com.google.android.gms.maps.model.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -74,13 +73,84 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
+
+
+        // Add a marker to the from location and move the camera
         val fromLocation = LatLng(fromLatitude, fromLongitude)
         mMap.addMarker(MarkerOptions().position(fromLocation).title("${fromLandmark} Marker"))
         //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(FROM_LOCATION_NAME_HERE, 15f))
 
+        // variables for adding images to map
+        val christ1 = GroundOverlayOptions()
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.christ))
+            .position(fromLocation, 3000000f, 3000000f)
+        val eiffel1 = GroundOverlayOptions()
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.eiffel))
+            .position(fromLocation, 3000000f, 3000000f)
+        val ggb1 = GroundOverlayOptions()
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.ggb))
+            .position(fromLocation, 3000000f, 3000000f)
+        val giza1 = GroundOverlayOptions()
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.giza))
+            .position(fromLocation, 3000000f, 3000000f)
+        val gwoc1 = GroundOverlayOptions()
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.gwoc))
+            .position(fromLocation, 3000000f, 3000000f)
+        val liberty1 = GroundOverlayOptions()
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.liberty))
+            .position(fromLocation, 3000000f, 3000000f)
+        val soh1 = GroundOverlayOptions()
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.soh))
+            .position(fromLocation, 3000000f, 3000000f)
+
+        // Add images of from landmark to map
+        when (fromLandmark) {
+            "Christ the Redeemer" -> mMap.addGroundOverlay(christ1)
+            "Eiffel Tower" -> mMap.addGroundOverlay(eiffel1)
+            "Golden Gate Bridge" -> mMap.addGroundOverlay(ggb1)
+            "Pyramids of Giza" -> mMap.addGroundOverlay(giza1)
+            "Great Wall of China" -> mMap.addGroundOverlay(gwoc1)
+            "Statue of Liberty" -> mMap.addGroundOverlay(liberty1)
+            "Sydney Opera House" -> mMap.addGroundOverlay(soh1)
+        }
+
+
         val toLocation = LatLng(toLatitude, toLongitude)
         mMap.addMarker(MarkerOptions().position(toLocation).title("${toLandmark} Marker"))
+
+        // variables for adding images to map
+        val christ2 = GroundOverlayOptions()
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.christ))
+            .position(toLocation, 3000000f, 3000000f)
+        val eiffel2 = GroundOverlayOptions()
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.eiffel))
+            .position(toLocation, 3000000f, 3000000f)
+        val ggb2 = GroundOverlayOptions()
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.ggb))
+            .position(toLocation, 3000000f, 3000000f)
+        val giza2 = GroundOverlayOptions()
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.giza))
+            .position(toLocation, 3000000f, 3000000f)
+        val gwoc2 = GroundOverlayOptions()
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.gwoc))
+            .position(toLocation, 3000000f, 3000000f)
+        val liberty2 = GroundOverlayOptions()
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.liberty))
+            .position(toLocation, 3000000f, 3000000f)
+        val soh2 = GroundOverlayOptions()
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.soh))
+            .position(toLocation, 3000000f, 3000000f)
+
+        // Add images of from landmark to map
+        when (toLandmark) {
+            "Christ the Redeemer" -> mMap.addGroundOverlay(christ2)
+            "Eiffel Tower" -> mMap.addGroundOverlay(eiffel2)
+            "Golden Gate Bridge" -> mMap.addGroundOverlay(ggb2)
+            "Pyramids of Giza" -> mMap.addGroundOverlay(giza2)
+            "Great Wall of China" -> mMap.addGroundOverlay(gwoc2)
+            "Statue of Liberty" -> mMap.addGroundOverlay(liberty2)
+            "Sydney Opera House" -> mMap.addGroundOverlay(soh2)
+        }
 
     }
 
