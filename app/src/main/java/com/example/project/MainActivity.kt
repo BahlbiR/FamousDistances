@@ -16,15 +16,8 @@ class MainActivity : AppCompatActivity() {
     private var fromLandmark : String? = fromSelection
     private var toLandmark : String? = toSelection
 
-    private var fromLatitude = 0.0
-    private var fromLongitude = 0.0
-    private var toLatitude = 0.0
-    private var toLongitude = 0.0
-
     private var fromIndex = 0
     private var toIndex = 1
-
-    private var distance = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,15 +50,10 @@ class MainActivity : AppCompatActivity() {
             return d;
         }
 
-        //distance = haversine_distance(LandmarkContent.ITEMS[0].latitude, LandmarkContent.ITEMS[0].longitude,
-          //  LandmarkContent.ITEMS[1].latitude, LandmarkContent.ITEMS[1].longitude)
-
         val mapButton = findViewById<Button>(R.id.mapButton)
         val distanceButton = findViewById<Button>(R.id.distanceButton)
 
         val distanceText = findViewById<TextView>(R.id.distanceLabel)
-        //distanceText.text = "${fromLandmark} and ${toLandmark} are about ${distance.roundToInt()} Miles apart"
-
         val fromSpinner = findViewById<Spinner>(R.id.fromSpinner)
         val toSpinner = findViewById<Spinner>(R.id.toSpinner)
 

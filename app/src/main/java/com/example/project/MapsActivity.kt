@@ -47,28 +47,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         if (intent.hasExtra("fromLatitude")) {
             fromLatitude = intent.getDoubleExtra("fromLatitude", 0.0)
-            //latitude = data?.getDoubleExtra("latitude", 0.0) ?: 0.0
         }
         if (intent.hasExtra("fromLongitude")) {
             fromLongitude = intent.getDoubleExtra("fromLongitude", 0.0)
-            //longitude = data?.getDoubleExtra("longitude", 0.0) ?: 0.0
         }
         if (intent.hasExtra("fromLandmark")) {
             fromLandmark = intent.getStringExtra("fromLandmark")
-            //latitude = data?.getDoubleExtra("latitude", 0.0) ?: 0.0
         }
-
         if (intent.hasExtra("toLatitude")) {
             toLatitude = intent.getDoubleExtra("toLatitude", 0.0)
-            //latitude = data?.getDoubleExtra("latitude", 0.0) ?: 0.0
         }
         if (intent.hasExtra("toLongitude")) {
             toLongitude = intent.getDoubleExtra("toLongitude", 0.0)
-            //longitude = data?.getDoubleExtra("longitude", 0.0) ?: 0.0
         }
         if (intent.hasExtra("toLandmark")) {
             toLandmark = intent.getStringExtra("toLandmark")
-            //longitude = data?.getDoubleExtra("longitude", 0.0) ?: 0.0
         }
 
         mMap = googleMap

@@ -8,8 +8,8 @@
 
     <Spinner
         android:id="@+id/toSpinner"
-        android:layout_width="324dp"
-        android:layout_height="27dp"
+        android:layout_width="329dp"
+        android:layout_height="51dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -58,7 +58,7 @@
         android:layout_width="359dp"
         android:layout_height="57dp"
         android:layout_marginTop="16dp"
-        android:text="Select two landmarks from the lists below to find the distance between the two. To see your selctions on a map, click the button below."
+        android:text="Select two landmarks from the lists below to find the distance between the two. To see your selections on a map, click the button below."
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:flow_wrapMode="aligned"
@@ -69,8 +69,8 @@
 
     <Spinner
         android:id="@+id/fromSpinner"
-        android:layout_width="324dp"
-        android:layout_height="27dp"
+        android:layout_width="329dp"
+        android:layout_height="55dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
